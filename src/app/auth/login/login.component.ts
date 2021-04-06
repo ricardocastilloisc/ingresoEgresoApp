@@ -33,11 +33,10 @@ export class LoginComponent implements OnInit {
 
     this.authService
       .loginUsuario(correo, password)
-      .then(credenciales =>
-      {
+      .then((credenciales) => {
         this.router.navigate(['/']);
-      }
-      ).catch((error) => {
+      })
+      .catch((error) => {
         console.log(error);
       });
   };
