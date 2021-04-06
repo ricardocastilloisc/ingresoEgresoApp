@@ -29,12 +29,21 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    Swal.fire({
+      title:'Espere por favor',
+      showConfirmButton: false,
+      onBeforeOpen: () => {
+        Swal.showLoading()
+      }
+    })
+
     const { nombre, correo, password } = this.registroForm.value;
 
     this.authService
       .crearUsuario(nombre, correo, password)
       .then((credenciales) =>
       {
+        Swal.close();
         this.router.navigate(['/'])
       })
       .catch((error) => {
