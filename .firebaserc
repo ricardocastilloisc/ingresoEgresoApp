@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "redux-809b3": {
+      "hosting": {
+        "ingresoEgresoApp": [
+          "redux-809b3"
+        ]
+      }
+    }
+  }
+}
