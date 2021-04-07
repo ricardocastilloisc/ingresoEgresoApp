@@ -20,7 +20,7 @@ export class IngresoEgresoService {
       .add({ ...ingresoEgreso });
   };
 
-  initIngresosEgresosListener(uid: string) {
+  initIngresosEgresosListener = (uid: string) =>{
    return this.firestore
       .collection(`${uid}/ingresos-egresos/items`)
       .snapshotChanges()
@@ -32,5 +32,12 @@ export class IngresoEgresoService {
           }))
         )
       )
+  }
+
+  borrarIngresoEgreso = (uidItem: string) =>
+  {
+    return this.firestore
+    .doc(`${this.authService.user.uid}/ingresos-egresos/items/${uidItem}`)
+    .delete();
   }
 }
