@@ -11,6 +11,7 @@ import * as authActions from '../auth/auth.actions';
 import { map } from 'rxjs/operators';
 import { Usuario } from '../models/usuario.model';
 import { Subscription } from 'rxjs';
+import  * as IngresoEgresoActions from '../ingreso-egreso/ingreso-egreso.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -50,6 +51,7 @@ export class AuthService {
         }
         this._user = null;
         this.store.dispatch(authActions.unSetUser());
+        this.store.dispatch(IngresoEgresoActions.unSetItems());
       }
     });
   };
