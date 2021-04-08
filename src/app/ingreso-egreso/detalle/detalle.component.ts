@@ -7,6 +7,7 @@ import { AppState } from '../../app.reducer';
 import { map } from 'rxjs/operators';
 import { IngresoEgresoService } from '../../services/ingreso-egreso.service';
 import Swal from 'sweetalert2';
+import { AppStateWithIngreso } from '../ingreso-egreso.reducer';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class DetalleComponent implements OnInit {
 
   ingresoEgreso$:Observable<IngresoEgreso[]>;
 
-  constructor(private store:Store<AppState>, private ingresoEgresoService:IngresoEgresoService) { }
+  constructor(private store:Store<AppStateWithIngreso>, private ingresoEgresoService:IngresoEgresoService) { }
 
   ngOnInit() {
     this.ingresoEgreso$ = this.store.select('ingresosEgresos').pipe(map(({items}) => items))
