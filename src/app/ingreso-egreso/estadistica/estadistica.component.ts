@@ -4,6 +4,8 @@ import { AppState } from 'src/app/app.reducer';
 import { Subscription } from 'rxjs';
 import { IngresoEgreso } from '../../models/ingreso-egreso.model';
 
+import { MultiDataSet, Label } from 'ng2-charts';
+
 @Component({
   selector: 'app-estadistica',
   templateUrl: './estadistica.component.html',
@@ -16,6 +18,14 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
   TotalEgresos: number = 0;
   TotalIngresos: number = 0;
   ingresosEgresosSub: Subscription;
+
+
+
+  public doughnutChartLabels: Label[] = ['Ingresos', 'Egresos'];
+  public doughnutChartData: MultiDataSet = [[]];
+
+
+
   constructor(private store: Store<AppState>) {}
   ngOnDestroy(): void {
     this.ingresosEgresosSub.unsubscribe();
@@ -48,5 +58,16 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
           this.egresos++;
         }
       })
+    this.doughnutChartData = [[this.TotalIngresos, this.TotalEgresos]];
   }
+
+
+  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
 }
