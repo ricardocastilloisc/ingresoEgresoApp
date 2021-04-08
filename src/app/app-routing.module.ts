@@ -13,7 +13,7 @@ const routes: Routes = [
       import('./ingreso-egreso/ingreso-egreso.module').then(
         (m) => m.IngresoEgresoModule
       ),
-    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
   },
   { path: '**', redirectTo: '' },
 ];
